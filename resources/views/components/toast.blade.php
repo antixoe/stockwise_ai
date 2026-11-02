@@ -1,0 +1,9 @@
+@props(['message' => null, 'type' => 'success'])
+
+<div x-data="{ visible: @js((bool) $message), message: @js($message), type: @js($type), timer: null, showToast(detail) { this.message = detail.message || 'Perubahan berhasil diproses.'; this.type = detail.type || 'success'; this.visible = true; clearTimeout(this.timer); this.timer = setTimeout(() => this.visible = false, 4200); }, close() { this.visible = false; clearTimeout(this.timer); } }" x-on:notify.window="showToast($event.detail)" x-init="if (visible) timer = setTimeout(() => visible = false, 4200)" x-show="visible" x-cloak x-transition:enter="transform ease-out duration-300" x-transition:enter-start="translate-y-4 scale-95 opacity-0" x-transition:enter-end="translate-y-0 scale-100 opacity-100" x-transition:leave="transform ease-in duration-200" x-transition:leave-start="translate-y-0 scale-100 opacity-100" x-transition:leave-end="translate-y-4 scale-95 opacity-0" class="fixed inset-x-4 bottom-5 z-[100] mx-auto max-w-sm sm:bottom-7" role="status" aria-live="polite">
+    <div class="flex items-center gap-3 rounded-2xl border border-white/70 bg-white/95 p-3 shadow-2xl shadow-slate-900/15 ring-1 ring-slate-900/5 backdrop-blur-xl">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg" :class="type === 'error' ? 'bg-rose-100 text-rose-600' : type === 'warning' ? 'bg-amber-100 text-amber-600' : 'bg-emerald-100 text-emerald-600'"><i class="bi" :class="type === 'error' ? 'bi-x-circle-fill' : type === 'warning' ? 'bi-exclamation-triangle-fill' : 'bi-check-circle-fill'" aria-hidden="true"></i></span>
+        <p class="min-w-0 flex-1 text-sm font-semibold leading-5 text-slate-700" x-text="message"></p>
+        <button type="button" x-on:click="close()" class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700" aria-label="Tutup notifikasi"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    </div>
+</div>

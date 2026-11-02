@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] { display: none !important; }
+
+html { scroll-behavior: smooth; }
+
+section[id] { scroll-margin-top: 2rem; }
+
+/* The hero keeps the section available through the main navigation. */
+a[href="#cara-kerja"] { display: none !important; }
+
+header a[href$="/register"] { display: none !important; }
+
+/* Keep the primary auth action reachable on small screens. */
+header button[type="button"] { display: inline-flex !important; }
+
+@layer components {
+    .label { @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500; }
+    .input { @apply block w-full rounded-xl border-slate-200 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500; }
+}

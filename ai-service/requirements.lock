@@ -1,0 +1,8 @@
+# Direct dependencies validated by the Stage 9 test run (Python 3.13).
+pandas==2.3.3
+numpy==2.5.4
+scikit-learn==1.9.1
+joblib==1.6.0
+pytest==8.4.2
+shap==0.54.1
+xgboost==3.4.1
